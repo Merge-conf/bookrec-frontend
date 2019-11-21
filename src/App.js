@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const App = () => {
+const App = ({ booklist }) => {
+  const [books, setBooks] = useState(booklist)
   return (
-    <div className="App">
-      <p>Hellurei</p>
+    <div>
+      <ul>
+        { books.map(book => <li>{book.name}</li>) }
+      </ul>
     </div>
-  );
+  )
 }
 
 export default App;
