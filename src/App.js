@@ -9,12 +9,13 @@ const App = ({ booklist }) => {
 
   const addBook = (event) => {
     event.preventDefault()
-    setBooks(
-      books.concat({
-        name,
-        author,
-      }),
-    )
+    const randomId = 10000 * Math.random
+    const newBook = {
+      id: randomId,
+      name,
+      author,
+    }
+    setBooks(books.concat(newBook))
   }
 
   return (
