@@ -1,6 +1,6 @@
 import React from 'react'
 
-const bookList = ({ list }) => (
+const BookList = ({ list }) => (
   <div>
     <ul>
       {list.map((book) => (
@@ -19,4 +19,4 @@ const bookList = ({ list }) => (
   </div>
 )
 
-export default bookList
+export default BookList
