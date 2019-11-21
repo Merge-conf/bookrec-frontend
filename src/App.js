@@ -14,19 +14,26 @@ const App = ({ booklist }) => {
         ))
     }
 
-    return (
+  return (
+    <div>
+      <form onSubmit={addBook}>
         <div>
-            <form onSubmit={addBook}>
-                <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
-                <input type="text" value={author} onChange={(event) => setAuthor(event.target.value)} />
-                <button type="submit">add book</button>
-            </form>
-
-            <ul>
-                { books.map((book) => <li key={book.id}>{book.name}</li>) }
-            </ul>
+          Title: <input type='text' value={name} onChange={event => setName(event.target.value)} />
         </div>
-    )
+        <div>
+          Author: <input type='text' value={author} onChange={event => setAuthor(event.target.value)} />
+        </div>
+        <div>
+          <button type="submit">add book</button>
+        </div>
+      </form>
+
+      <ul>
+        {books.map(book => <li key={book.id}>{book.name}</li>)}
+      </ul>
+    </div>
+  )
 }
 
-export default App
+
+export default App;
