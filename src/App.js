@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import BookList from './components/bookList'
 
 const App = ({ booklist }) => {
   const [books, setBooks] = useState(booklist)
@@ -31,12 +32,7 @@ const App = ({ booklist }) => {
           <button type="submit">add book</button>
         </div>
       </form>
-
-      <ul>
-        {books.map((book) => (
-          <li key={book.id}>{book.name}</li>
-        ))}
-      </ul>
+      <BookList list={books} />
     </div>
   )
 }
