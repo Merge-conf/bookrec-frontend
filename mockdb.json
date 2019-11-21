@@ -1,0 +1,19 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "name": "Taru sormusten herrasta",
+      "author": "J.R.R Tolkien"
+    },
+    {
+      "id": 2,
+      "name": "Sieppari ruispellossa",
+      "author": "J.D Salinger"
+    },
+    {
+      "id": 3,
+      "name": "Game Of Thrones",
+      "author": "George R.R Martin"
+    }
+  ]
+}

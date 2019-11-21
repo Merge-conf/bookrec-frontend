@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import BookList from './components/BookList'
 import BookForm from './components/BookForm'
+import bookService from './services/bookService'
 
-const App = ({ booklist }) => {
-  const [books, setBooks] = useState(booklist)
+const App = () => {
+  const [books, setBooks] = useState([])
   const [name, setName] = useState('')
   const [author, setAuthor] = useState('')
+
+  useEffect(() => {
+    bookService.getAll()
+      .then((data) => setBooks(data))
+  }, [])
 
   const addBook = (event) => {
     event.preventDefault()
@@ -15,7 +21,10 @@ const App = ({ booklist }) => {
       name,
       author,
     }
+    bookService.create(newBook)
     setBooks(books.concat(newBook))
+    setName('')
+    setAuthor('')
   }
 
   return (
