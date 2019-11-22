@@ -8,9 +8,9 @@ const BookList = ({ list }) => (
           Kirjoittaja:
           {' '}
           {book.author}
-          {'\n'}
+          <br />
           {' '}
-          otsikko:
+          Otsikko:
           {' '}
           {book.name}
         </li>
