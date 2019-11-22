@@ -31,7 +31,6 @@ const App = () => {
     <div>
       <BookForm addBook={addBook} setName={setName} setAuthor={setAuthor} />
       <BookList list={books} />
-      {process.env.NODE_ENV}
     </div>
   )
 }
