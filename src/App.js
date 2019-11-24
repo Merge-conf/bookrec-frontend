@@ -15,19 +15,18 @@ const App = () => {
 
   const addBook = (event) => {
     event.preventDefault()
-    const randomId = 10000 * Math.random
-    const newBook = {
-      id: randomId,
-      name,
-      author,
-    }
     if (name.length > 0) {
+      const newBook = {
+        name,
+        author,
+      }
       bookService.create(newBook)
-      setBooks(books.concat(newBook))
-      setName('')
-      setAuthor('')
+        .then((savedBook) => {
+          setBooks(books.concat(savedBook))
+          setName('')
+          setAuthor('')
+        })
     }
-
   }
 
   return (
