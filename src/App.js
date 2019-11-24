@@ -21,10 +21,13 @@ const App = () => {
       name,
       author,
     }
-    bookService.create(newBook)
-    setBooks(books.concat(newBook))
-    setName('')
-    setAuthor('')
+    if (name.length > 0) {
+      bookService.create(newBook)
+      setBooks(books.concat(newBook))
+      setName('')
+      setAuthor('')
+    }
+
   }
 
   return (
