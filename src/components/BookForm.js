@@ -3,17 +3,17 @@ import React from 'react'
 const BookForm = ({ addBook, setName, setAuthor }) => (
   <div>
     <form onSubmit={addBook}>
-      <Input text="Name: " set={setName} />
-      <Input text="Author: " set={setAuthor} />
+      <Input text="Name: " set={setName} id="bookName" />
+      <Input text="Author: " set={setAuthor} id="bookAuthor" />
       <Button text="Add book" />
     </form>
   </div>
 )
 
-const Input = ({ text, set }) => (
+const Input = ({ text, set, id }) => (
   <div>
     {text}
-    <input type="text" onChange={(event) => set(event.target.value)} />
+    <input id={id} type="text" onChange={(event) => set(event.target.value)} />
   </div>
 )
 
