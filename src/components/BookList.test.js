@@ -10,15 +10,17 @@ test('renders books name and author', () => {
     {
       name: 'The Dark Tower',
       author: 'Stephen King',
+      id: '1',
     }, {
       name: 'Good Omens',
       author: 'Terry Pratchett and Neil Gaiman',
+      id: '2',
     },
   ]
 
   const component = render(<BookList list={list} />)
 
-  expect(component.container).toHaveTextContent('Kirjoittaja: Terry Pratchett and Neil Gaiman otsikko: Good Omens')
+  expect(component.container).toHaveTextContent('Kirjoittaja: Terry Pratchett and Neil Gaiman Otsikko: Good Omens')
 })
 
 test('renders all books in booklist', () => {
@@ -26,9 +28,11 @@ test('renders all books in booklist', () => {
     {
       name: 'The Dark Tower',
       author: 'Stephen King',
+      id: '1',
     }, {
       name: 'Good Omens',
       author: 'Terry Pratchett and Neil Gaiman',
+      id: '2',
     },
   ]
 

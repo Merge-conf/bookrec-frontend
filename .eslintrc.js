@@ -24,4 +24,12 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/prop-types': ['off']
   },
+  overrides: [
+    {
+      files: ['*.test.js'],
+      rules: {
+        'no-undef': 0
+      }
+    }
+  ]
 }

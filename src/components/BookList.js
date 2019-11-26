@@ -4,14 +4,14 @@ const BookList = ({ list }) => (
   <div>
     <ul>
       {list.map((book) => (
-        <div className="book">
-          <li key={book.id}>
+        <div className="book" key={book.id}>
+          <li>
             Kirjoittaja:
             {' '}
             {book.author}
-            {'\n'}
+            <br />
             {' '}
-            otsikko:
+            Otsikko:
             {' '}
             {book.name}
           </li>

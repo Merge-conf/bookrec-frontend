@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = `${process.env.REACT_APP_API_URL}/books`
+const url = `${process.env.REACT_APP_API_URL}/audios`
 
 const getAll = () => {
   const req = axios.get(url)
