@@ -46,6 +46,17 @@ const App = () => {
     console.log(audioAuthor)
     console.log(audioName)
     console.log(audioFile)
+    const url = audioService.uploadFile(audioFile)
+    const newAudio = {
+      audioName,
+      audioAuthor,
+      url,
+    }
+    audioService.create(newAudio).then((savedAudio) => {
+      setItems(items.concat(savedAudio))
+      setAudioName('')
+      setAudioAuthor('')
+    })
   }
 
   return (
@@ -53,7 +64,12 @@ const App = () => {
       <BookForm addBook={addBook} setName={setName} setAuthor={setAuthor} />
       <FilterField filter={filter} setFilter={setFilter} />
       <List items={items} filter={filter} />
-      <AudioForm addAudio={addAudio} setAudioAuthor={setAudioAuthor} setAudioName={setAudioName} setAudioFile={setAudioFile} />
+      <AudioForm
+        addAudio={addAudio}
+        setAudioAuthor={setAudioAuthor}
+        setAudioName={setAudioName}
+        setAudioFile={setAudioFile}
+      />
     </div>
   )
 }
