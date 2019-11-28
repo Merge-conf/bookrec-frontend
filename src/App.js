@@ -7,8 +7,6 @@ import List from './components/List'
 import FilterField from './components/FilterField'
 
 const App = () => {
-  const [name, setName] = useState('')
-  const [author, setAuthor] = useState('')
   const [items, setItems] = useState([])
   const [filter, setFilter] = useState('')
   const [audioAuthor, setAudioAuthor] = useState('')
@@ -25,22 +23,6 @@ const App = () => {
       .then((data) => setItems(items.concat(data)))
   }, [])
 
-  const addBook = (event) => {
-    event.preventDefault()
-    if (name.length > 0) {
-      const newBook = {
-        name,
-        author,
-      }
-      bookService.create(newBook)
-        .then((savedBook) => {
-          setItems(items.concat(savedBook))
-          setName('')
-          setAuthor('')
-        })
-    }
-  }
-
   const addAudio = (event) => {
     event.preventDefault()
     console.log(audioAuthor)
@@ -50,7 +32,7 @@ const App = () => {
 
   return (
     <div>
-      <BookForm addBook={addBook} setName={setName} setAuthor={setAuthor} />
+      <BookForm items={items} setItems={setItems} />
       <FilterField filter={filter} setFilter={setFilter} />
       <List items={items} filter={filter} />
       <AudioForm addAudio={addAudio} setAudioAuthor={setAudioAuthor} setAudioName={setAudioName} setAudioFile={setAudioFile} />

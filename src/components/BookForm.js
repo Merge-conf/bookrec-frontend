@@ -1,14 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
+import bookService from '../services/bookService'
 
-const BookForm = ({ addBook, setName, setAuthor }) => (
-  <div>
-    <form onSubmit={addBook}>
-      <Input text="Name: " set={setName} id="bookName" />
-      <Input text="Author: " set={setAuthor} id="bookAuthor" />
-      <Button text="Add book" />
-    </form>
-  </div>
-)
+const BookForm = ({ items, setItems }) => {
+  const [name, setName] = useState('')
+  const [author, setAuthor] = useState('')
+
+  const addBook = (event) => {
+    event.preventDefault()
+    if (name.length > 0) {
+      const newBook = {
+        name,
+        author,
+      }
+      bookService.create(newBook)
+        .then((savedBook) => {
+          setItems(items.concat(savedBook))
+          setName('')
+          setAuthor('')
+        })
+    }
+  }
+
+  return (
+    <div>
+      <form onSubmit={addBook}>
+        <Input text="Name: " set={setName} id="bookName" />
+        <Input text="Author: " set={setAuthor} id="bookAuthor" />
+        <Button text="Add book" />
+      </form>
+    </div>
+)}
 
 const Input = ({ text, set, id }) => (
   <div>
