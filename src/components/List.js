@@ -11,5 +11,4 @@ const List = ({ items, filter }) => {
   )
 }
 
-
 export default List
