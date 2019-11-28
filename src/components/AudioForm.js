@@ -1,23 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // const onChange = (event) => {
 //   console.log(event.target.files[0])
 // }
 
-const AudioForm = ({
-  addAudio, setAudioAuthor, setAudioName, setAudioFile,
-}) => (
-  <div>
-    <form onSubmit={addAudio}>
-      <div>
-        <Input text="Name: " set={setAudioName} id="audioName" />
-        <Input text="Author: " set={setAudioAuthor} id="authorName" />
-        <InputAudio set={setAudioFile} id="audioFile" />
-      </div>
-      <button type="submit">upload</button>
-    </form>
+const AudioForm = () => {
+  const [creator, setCreator] = useState('')
+  const [name, setName] = useState('')
+  const [audioFile, setAudioFile] = useState([])
+
+  const addAudio = (event) => {
+    event.preventDefault()
+    console.log(creator)
+    console.log(name)
+    console.log(audioFile)
+  }
+
+  
+  return (
+    <div>
+      <form onSubmit={addAudio}>
+        <div>
+          <Input text="Name: " set={setName} id="audioName" />
+          <Input text="Creator: " set={setCreator} id="authorName" />
+          <InputAudio set={setAudioFile} id="audioFile" />
+        </div>
+        <button type="submit">Upload</button>
+      </form>
   </div>
-)
+)}
 
 const Input = ({ text, set, id }) => (
   <div>

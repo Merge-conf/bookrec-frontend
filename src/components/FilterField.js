@@ -2,7 +2,10 @@ import React from 'react'
 
 const FilterField = ({ filter, setFilter }) => {
   return (
-    <input type="text" value={filter} onChange={(event) => setFilter(event.target.value)} />
+    <div>
+      <h2>Filter recommendations</h2>
+      <input type="text" value={filter} onChange={(event) => setFilter(event.target.value)} />
+    </div>
   )
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import bookService from '../services/bookService'
 
-const BookForm = ({ items, setItems }) => {
+const BookForm = ({ items, setItems, setType }) => {
   const [name, setName] = useState('')
   const [author, setAuthor] = useState('')
 
@@ -17,6 +17,7 @@ const BookForm = ({ items, setItems }) => {
           setItems(items.concat(savedBook))
           setName('')
           setAuthor('')
+          setType('')
         })
     }
   }

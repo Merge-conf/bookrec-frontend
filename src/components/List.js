@@ -5,9 +5,12 @@ const List = ({ items, filter }) => {
   const mapItems = () => filterItems().map((item) => <li>{item.name}</li>)
 
   return (
-    <ul>
-      {mapItems()}
-    </ul>
+    <div>
+      <h2>Recommendation list</h2>
+      <ul>
+        {mapItems()}
+      </ul>
+    </div>
   )
 }
 
