@@ -7,10 +7,12 @@ let container
 const audios = [
   {
     name: 'Podcast of the year',
+    id: '1'
   },
   {
     name: 'Imagine',
     creator: 'John Lennon',
+    id: '2'
   },
 ]
 
