@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import BookForm from './components/BookForm'
 import AudioForm from './components/AudioForm'
 import bookService from './services/bookService'
-import audioService from './services/audioService'
+import recommendationService from './services/recommendationService'
 import List from './components/List'
 import FilterField from './components/FilterField'
 
@@ -16,13 +16,8 @@ const App = () => {
   const [audioFile, setAudioFile] = useState([])
 
   useEffect(() => {
-    bookService.getAll()
-      .then((data) => setItems(items.concat(data)))
-  }, [])
-
-  useEffect(() => {
-    audioService.getAll()
-      .then((data) => setItems(items.concat(data)))
+    recommendationService.getAll()
+      .then((data) => setItems(data))
   }, [])
 
   const addBook = (event) => {
