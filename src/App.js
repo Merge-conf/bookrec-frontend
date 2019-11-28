@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react'
-import BookList from './components/BookList'
 import BookForm from './components/BookForm'
 import bookService from './services/bookService'
 import audioService from './services/audioService'
-import AudioList from './components/AudioList'
+import List from './components/List'
+import FilterField from './components/FilterField'
 
 const App = () => {
-  const [books, setBooks] = useState([])
-  const [audios, setAudios] = useState([])
   const [name, setName] = useState('')
   const [author, setAuthor] = useState('')
+  const [items, setItems] = useState([])
+  const [filter, setFilter] = useState('')
 
   useEffect(() => {
     bookService.getAll()
-      .then((data) => setBooks(data))
+      .then((data) => setItems(items.concat(data)))
   }, [])
 
   useEffect(() => {
     audioService.getAll()
-      .then((data) => setAudios(data))
+      .then((data) => setItems(items.concat(data)))
   }, [])
 
   const addBook = (event) => {
@@ -30,7 +30,7 @@ const App = () => {
       }
       bookService.create(newBook)
         .then((savedBook) => {
-          setBooks(books.concat(savedBook))
+          setItems(items.concat(savedBook))
           setName('')
           setAuthor('')
         })
@@ -40,8 +40,8 @@ const App = () => {
   return (
     <div>
       <BookForm addBook={addBook} setName={setName} setAuthor={setAuthor} />
-      <BookList list={books} />
-      <AudioList list={audios} />
+      <FilterField filter={filter} setFilter={setFilter} />
+      <List items={items} filter={filter} />
     </div>
   )
 }
