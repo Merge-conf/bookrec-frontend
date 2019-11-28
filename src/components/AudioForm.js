@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
+import audioService from '../services/audioService'
 
 // const onChange = (event) => {
 //   console.log(event.target.files[0])
 // }
 
-const AudioForm = () => {
+const AudioForm = ({ items, setItems, setType }) => {
   const [creator, setCreator] = useState('')
   const [name, setName] = useState('')
   const [audioFile, setAudioFile] = useState([])
@@ -14,6 +15,18 @@ const AudioForm = () => {
     console.log(creator)
     console.log(name)
     console.log(audioFile)
+    const url = audioService.uploadFile(audioFile)
+    const newAudio = {
+      name,
+      creator,
+      url,
+    }
+    audioService.create(newAudio).then((savedAudio) => {
+      setItems(items.concat(savedAudio))
+      setName('')
+      setCreator('')
+      setType('')
+    })
   }
 
   
