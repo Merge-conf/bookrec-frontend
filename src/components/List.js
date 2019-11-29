@@ -32,8 +32,8 @@ const List = ({ items, filter, checkFilter }) => {
 const Book = ({ id, name, author }) => {
   return (
     <li key={id}>
-      {`Nimi: ${name}, `}
-      {`Kirjoittaja: ${author}`}
+      {`Name: ${name}, `}
+      {`Author: ${author}`}
     </li>
   )
 }
@@ -41,7 +41,7 @@ const Book = ({ id, name, author }) => {
 const Audio = ({ id, name, creator, url }) => {
   return (
     <li key={id}>
-      {`Otsikko: ${name} - ${creator}`}
+      {`Title: ${name} - ${creator}`}
     </li>
   )
 }
