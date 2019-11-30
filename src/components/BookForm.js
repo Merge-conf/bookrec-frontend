@@ -30,7 +30,8 @@ const BookForm = ({ items, setItems, setType }) => {
         <Button text="Add book" />
       </form>
     </div>
-)}
+  )
+}
 
 const Input = ({ text, set, id }) => (
   <div>

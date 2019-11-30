@@ -29,21 +29,19 @@ const List = ({ items, filter, checkFilter }) => {
 }
 
 
-const Book = ({ id, name, author }) => {
-  return (
-    <li key={id}>
-      {`Name: ${name}, `}
-      {`Author: ${author}`}
-    </li>
-  )
-}
+const Book = ({ id, name, author }) => (
+  <li key={id}>
+    {`Name: ${name}, `}
+    {`Author: ${author}`}
+  </li>
+)
 
-const Audio = ({ id, name, creator, url }) => {
-  return (
-    <li key={id}>
-      {`Title: ${name} - ${creator}`}
-    </li>
-  )
-}
+const Audio = ({
+  id, name, creator, url,
+}) => (
+  <li key={id}>
+    {`Title: ${name} - ${creator}`}
+  </li>
+)
 
 export default List

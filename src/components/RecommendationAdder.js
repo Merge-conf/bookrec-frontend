@@ -18,7 +18,9 @@ const RecommendationAdder = ({ items, setItems }) => {
   )
 }
 
-const FormChooser = ({ type, setType, items, setItems }) => {
+const FormChooser = ({
+ type, setType, items, setItems 
+}) => {
   if (type === 'Book') return <BookForm items={items} setItems={setItems} setType={setType} />
   if (type === 'Audio') return <AudioForm items={items} setItems={setItems} setType={setType} />
   return null
