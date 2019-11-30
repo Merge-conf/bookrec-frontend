@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from './Button'
 
 const List = ({ items, filter, checkFilter }) => {
   const filterItems = (list) => list.filter((item) => {
@@ -13,8 +14,8 @@ const List = ({ items, filter, checkFilter }) => {
 
   const mapItems = (list) => list.map((item) => {
     if (!item.name) return <li key={item.id}>no name</li>
-    if (item.author) return <Book key={item.id} name={item.name} author={item.author} />
-    if (item.creator && item.url) return <Audio key={item.id} name={item.name} creator={item.creator} url={item.url} />
+    if (item.author) return <BookRec key={item.id} name={item.name} author={item.author} />
+    if (item.creator && item.url) return <AudioRec key={item.id} name={item.name} creator={item.creator} url={item.url} />
     return <li>not book or audio</li>
   })
 
@@ -29,18 +30,21 @@ const List = ({ items, filter, checkFilter }) => {
 }
 
 
-const Book = ({ id, name, author }) => (
+const BookRec = ({ id, name, author }) => (
   <li key={id}>
     {`Name: ${name}, `}
     {`Author: ${author}`}
   </li>
 )
 
-const Audio = ({
+const AudioRec = ({
   id, name, creator, url,
 }) => (
   <li key={id}>
     {`Title: ${name} - ${creator}`}
+    <Button text="play" handleClick={() => {
+      new Audio(url).play()
+    }} />
   </li>
 )
 
