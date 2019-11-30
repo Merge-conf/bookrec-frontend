@@ -13,9 +13,11 @@ const create = (track) => {
   return req.then((res) => res.data)
 }
 
-const uploadFile = ({ file }) => {
-  const req = axios.post(uploadUrl, file)
-  return req.then((res) => res.data)
+const uploadFile = async (file) => {
+  const data = new FormData()
+  data.append('track', file)
+  const res = await axios.post(uploadUrl, data)
+  return res.data.url
 }
 
 export default { getAll, create, uploadFile }

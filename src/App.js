@@ -8,7 +8,7 @@ const App = () => {
   const [items, setItems] = useState([])
   const [filter, setFilter] = useState('')
   const [checkFilter, setCheckFilter] = useState({ books: false, audio: false })
-  
+
   useEffect(() => {
     recommendationService.getAll()
       .then((data) => setItems(data))

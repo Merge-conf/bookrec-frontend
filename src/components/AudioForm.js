@@ -1,21 +1,14 @@
 import React, { useState } from 'react'
 import audioService from '../services/audioService'
 
-// const onChange = (event) => {
-//   console.log(event.target.files[0])
-// }
-
 const AudioForm = ({ items, setItems, setType }) => {
   const [creator, setCreator] = useState('')
   const [name, setName] = useState('')
   const [audioFile, setAudioFile] = useState([])
 
-  const addAudio = (event) => {
+  const addAudio = async (event) => {
     event.preventDefault()
-    console.log(creator)
-    console.log(name)
-    console.log(audioFile)
-    const url = audioService.uploadFile(audioFile)
+    const url = await audioService.uploadFile(audioFile)
     const newAudio = {
       name,
       creator,
@@ -29,7 +22,7 @@ const AudioForm = ({ items, setItems, setType }) => {
     })
   }
 
-  
+
   return (
     <div>
       <form onSubmit={addAudio}>
@@ -40,8 +33,9 @@ const AudioForm = ({ items, setItems, setType }) => {
         </div>
         <button type="submit">Upload</button>
       </form>
-  </div>
-)}
+    </div>
+  )
+}
 
 const Input = ({ text, set, id }) => (
   <div>
