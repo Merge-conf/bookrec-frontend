@@ -46,10 +46,10 @@ const EditForm = ({ items, setItems, inEdit, setInEdit }) => {
 
   if (isBook) {
     return (
-      <form onSubmit={editBook}>
-        <Input label="name" value={newName} set={setNewName} />
-        <Input label="author" value={newAuthor} set={setNewAuthor} />
-        <button type="submit">edit</button>
+      <form onSubmit={editBook} >
+        <Input label="name" value={newName} set={setNewName} id="bookName" />
+        <Input label="author" value={newAuthor} set={setNewAuthor} id="bookAuthor" />
+        <button type="submit" id="submitBook">edit</button>
         <button type="button" onClick={() => setInEdit(null)}>cancel</button>
       </form>
     )
@@ -57,11 +57,11 @@ const EditForm = ({ items, setItems, inEdit, setInEdit }) => {
 
   if (isAudio) {
     return (
-      <form onSubmit={editAudio}>
-        <Input label="name" value={newName} set={setNewName} />
-        <Input label="creator" value={newCreator} set={setNewCreator} />
-        <Input label="url" value={newUrl} set={setNewUrl} />
-        <button type="submit">edit</button>
+      <form onSubmit={editAudio} >
+        <Input label="name" value={newName} set={setNewName} id="audioName" />
+        <Input label="creator" value={newCreator} set={setNewCreator} id="audioCreator" />
+        <Input label="url" value={newUrl} set={setNewUrl} id="audioUrl" />
+        <button type="submit" id="submitAudio">edit</button>
         <button type="button" onClick={() => setInEdit(null)}>cancel</button>
       </form>
     )
@@ -69,11 +69,11 @@ const EditForm = ({ items, setItems, inEdit, setInEdit }) => {
   return <div />
 }
 
-const Input = ({ label, value, set }) => {
+const Input = ({ label, value, set, id }) => {
   return (
     <div>
       {`${label}: `}
-      <input type="text" value={value} onChange={(event) => set(event.target.value)} />
+      <input id={id} type="text" value={value} onChange={(event) => set(event.target.value)} />
     </div>
   )
 }
