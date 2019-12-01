@@ -1,7 +1,6 @@
 import React from 'react'
-import Button from './Button'
 
-const List = ({ items, filter, checkFilter }) => {
+const List = ({ items, filter, checkFilter, setInEdit }) => {
   const filterItems = (list) => list.filter((item) => {
     const itemUpper = item.name.toUpperCase()
     const filterUpper = filter.toUpperCase()
@@ -14,8 +13,8 @@ const List = ({ items, filter, checkFilter }) => {
 
   const mapItems = (list) => list.map((item) => {
     if (!item.name) return <li key={item.id}>no name</li>
-    if (item.author) return <BookRec key={item.id} name={item.name} author={item.author} />
-    if (item.creator && item.url) return <AudioRec key={item.id} name={item.name} creator={item.creator} url={item.url} />
+    if (item.author) return <BookRec key={item.id} item={item} setInEdit={setInEdit} />
+    if (item.creator && item.url) return <AudioRec key={item.id} item={item} setInEdit={setInEdit} />
     return <li>not book or audio</li>
   })
 
@@ -30,21 +29,19 @@ const List = ({ items, filter, checkFilter }) => {
 }
 
 
-const BookRec = ({ id, name, author }) => (
-  <li key={id}>
-    {`Name: ${name}, `}
-    {`Author: ${author}`}
+const BookRec = ({ item, setInEdit }) => (
+  <li>
+    {`Name: ${item.name}, `}
+    {`Author: ${item.author}`}
+    <button type="button" onClick={() => setInEdit(item)}>edit</button>
   </li>
 )
 
-const AudioRec = ({
-  id, name, creator, url,
-}) => (
-  <li key={id}>
-    {`Title: ${name} - ${creator}`}
-    <Button text="play" handleClick={() => {
-      new Audio(url).play()
-    }} />
+const AudioRec = ({ item, setInEdit }) => (
+  <li>
+    {`Title: ${item.name} - ${item.creator}`}
+    <button type="button" onClick={() => new Audio(item.url).play()}>play</button>
+    <button type="button" onClick={() => setInEdit(item)}>edit</button>
   </li>
 )
 
