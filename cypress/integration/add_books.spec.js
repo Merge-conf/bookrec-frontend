@@ -5,6 +5,9 @@ describe('Books can be added', function () {
 
   it('with title and author', function () {
     cy.visit('http://localhost:3000')
+
+    cy.get('select')
+      .select('Book')
     
     cy.get('#bookName')
       .type('Lord of the Rings')
@@ -14,7 +17,9 @@ describe('Books can be added', function () {
     cy.contains('Add book')
       .click()
 
-    cy.contains('Kirjoittaja: Tolkien')
-      .contains('otsikko: Lord of the Rings')
+    cy.get('[type="checkbox"]').check()
+
+    cy.contains('Author: Tolkien')
+      .contains('Name: Lord of the Rings')
   })
 })
