@@ -33,7 +33,7 @@ const EditForm = ({ items, setItems, inEdit, setInEdit }) => {
         return {
           ...item,
           name: newName,
-          autho: newAuthor,
+          author: newAuthor,
         }
       }
       return item
@@ -47,8 +47,8 @@ const EditForm = ({ items, setItems, inEdit, setInEdit }) => {
   if (isBook) {
     return (
       <form onSubmit={editBook}>
-        <Input value={newName} set={setNewName} />
-        <Input value={newAuthor} set={setNewAuthor} />
+        <Input label="name" value={newName} set={setNewName} />
+        <Input label="author" value={newAuthor} set={setNewAuthor} />
         <button type="submit">edit</button>
         <button type="button" onClick={() => setInEdit(null)}>cancel</button>
       </form>
