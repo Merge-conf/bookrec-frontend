@@ -20,9 +20,9 @@ describe('Audio recommendation can be added', function () {
       cy.get('#audioCreator')
         .type('Anon')
 
-      const fileName = 'example.json';
+      const fileName = 'audio.mp3';
       cy.fixture(fileName).then(fileContent => {
-        cy.get('#audioFile').upload({ fileContent, fileName, mimeType: 'application/json', encoding: 'utf8' });
+        cy.get('#audioFile').upload({ fileContent, fileName, mimeType: 'audio/mpeg', encoding: 'utf8' });
       });
   
       cy.contains('Upload')
