@@ -14,12 +14,11 @@ const AudioForm = ({ items, setItems, setType }) => {
       creator,
       url,
     }
-    audioService.create(newAudio).then((savedAudio) => {
-      setItems(items.concat(savedAudio))
-      setName('')
-      setCreator('')
-      setType('')
-    })
+    const savedAudio = await audioService.create(newAudio)
+    setItems(items.concat(savedAudio))
+    setName('')
+    setCreator('')
+    setType('')
   }
 
 
