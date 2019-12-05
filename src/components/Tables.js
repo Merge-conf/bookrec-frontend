@@ -1,46 +1,67 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DataTable from 'react-data-table-component'
+import Popup from 'reactjs-popup'
 
 const Tables = ({ books, audio, filter }) => {
+  const [editing, setEditing] = useState(false)
+  const [inEdit, setInEdit] = useState(null)
   const bookColumns = [
     {
       name: 'author',
       selector: 'author',
-      sortable: true
+      sortable: true,
     },
     {
       name: 'name',
       selector: 'name',
-      sortable: true
-    }
+      sortable: true,
+    },
   ]
 
   const audioColumns = [
     {
       name: 'creator',
       selector: 'creator',
-      sortable: true
+      sortable: true,
     },
     {
       name: 'name',
       selector: 'name',
-      sortable: true
-    }
+      sortable: true,
+    },
   ]
 
   return (
     <div>
+      <Table
+        onClick={(item) => {
+          setEditing(true)
+          setInEdit(item)
+        }}
+        toggle={filter.books}
+        title="Books"
+        data={books}
+        columns={bookColumns}
+      />
 
-      <Table toggle={filter.books} title="Books" data={books} columns={bookColumns} />
-      <Table toggle={filter.audio} title="Audio" data={audio} columns={audioColumns} />
+      <Table
+        onClick={(item) => {
+          setEditing(true)
+          setInEdit(item)
+        }}
+        toggle={filter.audio}
+        title="Audio"
+        data={audio}
+        columns={audioColumns}
+      />
     </div>
   )
 }
 
-const Table = ({ toggle, title, data, columns }) => {
+const Table = ({ onClick, toggle, title, data, columns }) => {
   if (toggle) {
     return (
-      <DataTable selectableRows title={title} columns={columns} data={data} />
+      <DataTable onRowClicked={onClick} selectableRows title={title} columns={columns} data={data} />
     )
   }
   return (<></>)

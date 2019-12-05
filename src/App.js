@@ -28,7 +28,7 @@ const App = () => {
       <Checkbox defaultChecked onChange={() => setFilter({ ...filter, books: !filter.books })} />
       Audio:
       <Checkbox defaultChecked onChange={() => setFilter({ ...filter, audio: !filter.audio })} />
-      <Tables books={books} audio={audio} filter={filter} /> 
+      <Tables books={books} audio={audio} filter={filter} />
     </div>
   )
 }
