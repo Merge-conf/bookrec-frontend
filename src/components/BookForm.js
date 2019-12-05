@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import bookService from '../services/bookService'
+import { StyledInput, StyledButton } from './Styles'
 
 const BookForm = ({ items, setItems, setType }) => {
   const [name, setName] = useState('')
@@ -25,8 +26,8 @@ const BookForm = ({ items, setItems, setType }) => {
   return (
     <div>
       <form onSubmit={addBook}>
-        <Input text="Name: " set={setName} id="bookName" />
-        <Input text="Author: " set={setAuthor} id="bookAuthor" />
+        <Input text="Name" set={setName} id="bookName" />
+        <Input text="Author" set={setAuthor} id="bookAuthor" />
         <Button text="Add book" />
       </form>
     </div>
@@ -35,12 +36,11 @@ const BookForm = ({ items, setItems, setType }) => {
 
 const Input = ({ text, set, id }) => (
   <div>
-    {text}
-    <input id={id} type="text" onChange={(event) => set(event.target.value)} />
+    <StyledInput id={id} placeholder={text} type="text" onChange={(event) => set(event.target.value)} />
   </div>
 )
 
-const Button = ({ text }) => <button type="submit">{text}</button>
+const Button = ({ text }) => <StyledButton type="submit">{text}</StyledButton>
 
 
 export default BookForm
