@@ -1,11 +1,23 @@
 import React, { useState } from 'react'
 import DataTable from 'react-data-table-component'
 import Popup from 'reactjs-popup'
+import bookService from '../services/bookService'
+import audioService from '../services/audioService'
 
-const Tables = ({ books, audio, filter }) => {
-  const [editing, setEditing] = useState(false)
+const Tables = ({ books, setBooks, audio, setAudio, filter }) => {
+  return (
+    <div>
+      <BookTable data={books} setData={setBooks} render={filter.books} />
+      <AudioTable data={audio} setData={setAudio} render={filter.audio} />
+    </div>
+  )
+}
+
+const BookTable = ({ setData, data, render }) => {
   const [inEdit, setInEdit] = useState(null)
-  const bookColumns = [
+  const [name, setName] = useState('')
+  const [author, setAuthor] = useState('')
+  const columns = [
     {
       name: 'author',
       selector: 'author',
@@ -18,7 +30,49 @@ const Tables = ({ books, audio, filter }) => {
     },
   ]
 
-  const audioColumns = [
+  if (!render) return <></>
+  const edit = (event) => {
+    event.preventDefault()
+    const newBook = {
+      ...inEdit,
+      name,
+      author,
+    }
+    bookService.update(newBook, inEdit.id)
+      .then((updated) => {
+        const newData = data.map((book) => {
+          if (book === inEdit) return updated
+          return book
+        })
+        setData(newData)
+      })
+    setInEdit(null)
+    setName('')
+    setAuthor('')
+  }
+  return (
+    <div>
+      <Popup modal open={Boolean(inEdit)} onClose={() => setInEdit(null)}>
+        <form onSubmit={edit}>
+          New Name:
+          <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
+          <br />
+          New Author:
+          <input type="text" value={author} onChange={(event) => setAuthor(event.target.value)} />
+          <br />
+          <button type="submit">edit</button>
+        </form>
+      </Popup>
+      <DataTable onRowClicked={(item) => setInEdit(item)} selectableRows title="Books" columns={columns} data={data} />
+    </div>
+  )
+}
+
+const AudioTable = ({ setData, data, render }) => {
+  const [inEdit, setInEdit] = useState(null)
+  const [name, setName] = useState('')
+  const [creator, setCreator] = useState('')
+  const columns = [
     {
       name: 'creator',
       selector: 'creator',
@@ -31,40 +85,41 @@ const Tables = ({ books, audio, filter }) => {
     },
   ]
 
+  if (!render) return <></>
+  const edit = (event) => {
+    event.preventDefault()
+    const newAudio = {
+      ...inEdit,
+      name,
+      creator,
+    }
+    audioService.update(newAudio, inEdit.id)
+      .then((updated) => {
+        const newData = data.map((audio) => {
+          if (audio === inEdit) return updated
+          return audio
+        })
+        setData(newData)
+      })
+    setInEdit(null)
+    setName('')
+    setCreator('')
+  }
   return (
     <div>
-      <Table
-        onClick={(item) => {
-          setEditing(true)
-          setInEdit(item)
-        }}
-        toggle={filter.books}
-        title="Books"
-        data={books}
-        columns={bookColumns}
-      />
-
-      <Table
-        onClick={(item) => {
-          setEditing(true)
-          setInEdit(item)
-        }}
-        toggle={filter.audio}
-        title="Audio"
-        data={audio}
-        columns={audioColumns}
-      />
+      <Popup modal open={Boolean(inEdit)} onClose={() => setInEdit(null)}>
+        <form onSubmit={edit}>
+          New name:
+          <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
+          <br />
+          New creator:
+          <input type="text" value={creator} onChange={(event) => setCreator(event.target.value)} />
+          <br />
+          <button type="submit">edit</button>
+        </form>
+      </Popup>
+      <DataTable onRowClicked={(item) => setInEdit(item)} selectableRows title="Audio" columns={columns} data={data} />
     </div>
   )
 }
-
-const Table = ({ onClick, toggle, title, data, columns }) => {
-  if (toggle) {
-    return (
-      <DataTable onRowClicked={onClick} selectableRows title={title} columns={columns} data={data} />
-    )
-  }
-  return (<></>)
-}
-
 export default Tables

@@ -7,6 +7,7 @@ import FilterField from './components/FilterField'
 import EditForm from './components/EditForm'
 import RecommendationAdder from './components/RecommendationAdder'
 import Tables from './components/Tables'
+import styled from 'styled-components'
 
 const App = () => {
   const [filter, setFilter] = useState({ books: true, audio: true })
@@ -22,15 +23,29 @@ const App = () => {
 
 
   return (
-    <div>
+    <Content>
       <RecommendationAdder books={books} setBooks={setBooks} audio={audio} setAudio={setAudio} />
+      <Header>Filter recommendations by type</Header>
       Books:
       <Checkbox defaultChecked onChange={() => setFilter({ ...filter, books: !filter.books })} />
       Audio:
       <Checkbox defaultChecked onChange={() => setFilter({ ...filter, audio: !filter.audio })} />
-      <Tables books={books} audio={audio} filter={filter} />
-    </div>
+      <Tables books={books} setBooks={setBooks} audio={audio} setAudio={setAudio} filter={filter} />
+    </Content>
   )
 }
+
+const Content = styled.div`
+  max-width: 720px;
+  margin 0 auto;
+  font-family: Roboto;
+  color: #102a43;
+`
+
+const Header = styled.h2`
+font-size: 16px;
+margin-top: 20px;
+margin-bottom: 4px;
+`
 
 export default App

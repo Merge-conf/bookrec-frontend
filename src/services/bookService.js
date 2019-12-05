@@ -12,4 +12,9 @@ const create = (book) => {
   return req.then((res) => res.data)
 }
 
-export default { getAll, create }
+const update = async (book, id) => {
+  const res = await axios.put(`${url}/${id}`, book)
+  return res.data
+}
+
+export default { getAll, create, update }

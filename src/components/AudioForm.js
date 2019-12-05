@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import audioService from '../services/audioService'
+import { StyledInput, StyledButton } from './Styles'
+import styled from 'styled-components'
 
 const AudioForm = ({ items, setItems, setType }) => {
   const [creator, setCreator] = useState('')
@@ -26,16 +28,16 @@ const AudioForm = ({ items, setItems, setType }) => {
     <div>
       <form onSubmit={addAudio}>
         <div>
-          <Input text="Name: " set={setName} id="audioName" />
-          <Input text="Creator: " set={setCreator} id="audioCreator" />
-          <input
+          <Input text="Name" set={setName} id="audioName" />
+          <Input text="Creator" set={setCreator} id="audioCreator" />
+          <FileUpload
             id="audioFile"
             type="file"
             onChange={(event) => setAudioFile(event.target.files[0])}
             accept=".mp3, .mpeg4, .wav"
           />
         </div>
-        <button type="submit">Upload</button>
+        <StyledButton type="submit">Upload</StyledButton>
       </form>
     </div>
   )
@@ -43,9 +45,12 @@ const AudioForm = ({ items, setItems, setType }) => {
 
 const Input = ({ text, set, id }) => (
   <div>
-    {text}
-    <input id={id} type="text" onChange={(event) => set(event.target.value)} />
+    <StyledInput id={id} placeholder={text} type="text" onChange={(event) => set(event.target.value)} />
   </div>
 )
+
+const FileUpload = styled.input`
+  margin-top: 8px;
+`
 
 export default AudioForm

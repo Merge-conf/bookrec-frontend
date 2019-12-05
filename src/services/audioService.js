@@ -13,6 +13,11 @@ const create = (track) => {
   return req.then((res) => res.data)
 }
 
+const update = async (track, id) => {
+  const res = await axios.put(`${url}/${id}`, track)
+  return res.data
+}
+
 const uploadFile = async (file) => {
   const data = new FormData()
   data.append('track', file)
@@ -20,4 +25,4 @@ const uploadFile = async (file) => {
   return res.data.url
 }
 
-export default { getAll, create, uploadFile }
+export default { getAll, create, uploadFile, update }
