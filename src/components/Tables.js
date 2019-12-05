@@ -21,13 +21,13 @@ const BookTable = ({ setData, data, render }) => {
     {
       name: 'author',
       selector: 'author',
-      sortable: true,
+      sortable: true
     },
     {
       name: 'name',
       selector: 'name',
-      sortable: true,
-    },
+      sortable: true
+    }
   ]
 
   if (!render) return <></>
@@ -76,13 +76,13 @@ const AudioTable = ({ setData, data, render }) => {
     {
       name: 'creator',
       selector: 'creator',
-      sortable: true,
+      sortable: true
     },
     {
       name: 'name',
       selector: 'name',
-      sortable: true,
-    },
+      sortable: true
+    }
   ]
 
   if (!render) return <></>
