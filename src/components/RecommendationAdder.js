@@ -7,7 +7,7 @@ const RecommendationAdder = ({ books, setBooks, audio, setAudio }) => {
   const [type, setType] = useState('')
   console.log(books)
   return (
-    <div>
+    <Div>
       <Header>Add recommendation</Header>
       <TypeSelector value={type} onChange={(e) => setType(e.target.value)}>
         <option value="">Choose type</option>
@@ -15,7 +15,7 @@ const RecommendationAdder = ({ books, setBooks, audio, setAudio }) => {
         <option value="Audio">Audio</option>
       </TypeSelector>
       <FormChooser books={books} setBooks={setBooks} audio={audio} setAudio={setAudio} type={type} setType={setType} />
-    </div>
+    </Div>
   )
 }
 
@@ -27,6 +27,10 @@ const FormChooser = ({
   if (type === 'Audio') return <AudioForm items={audio} setItems={setAudio} setType={setType} />
   return null
 }
+
+const Div = styled.div`
+  padding: 14px 0;
+`
 
 const Header = styled.h2`
   font-size: 20px;
