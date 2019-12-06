@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import bookService from './services/bookService'
 import audioService from './services/audioService'
 import RecommendationAdder from './components/RecommendationAdder'
-import Tables from './components/Tables'
+import Tables from './components/Tables/Tables'
 
 const App = () => {
   const [filter, setFilter] = useState({ books: true, audio: true })
