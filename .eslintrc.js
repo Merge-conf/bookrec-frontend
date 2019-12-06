@@ -1,7 +1,8 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true
+    es6: true,
+    jest: true
   },
   extends: ['airbnb'],
   globals: {
@@ -22,7 +23,8 @@ module.exports = {
     'no-tabs': 0,
     'react/jsx-indent': ['off'],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-    'react/prop-types': ['off']
+    'react/prop-types': ['off'],
+    "object-curly-newline": ["off"]
   },
   overrides: [
     {

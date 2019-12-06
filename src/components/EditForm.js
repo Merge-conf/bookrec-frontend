@@ -46,7 +46,7 @@ const EditForm = ({ items, setItems, inEdit, setInEdit }) => {
 
   if (isBook) {
     return (
-      <form onSubmit={editBook} >
+      <form onSubmit={editBook}>
         <Input label="name" value={newName} set={setNewName} id="bookName" />
         <Input label="author" value={newAuthor} set={setNewAuthor} id="bookAuthor" />
         <button type="submit" id="submitBook">edit</button>
@@ -57,7 +57,7 @@ const EditForm = ({ items, setItems, inEdit, setInEdit }) => {
 
   if (isAudio) {
     return (
-      <form onSubmit={editAudio} >
+      <form onSubmit={editAudio}>
         <Input label="name" value={newName} set={setNewName} id="audioName" />
         <Input label="creator" value={newCreator} set={setNewCreator} id="audioCreator" />
         <Input label="url" value={newUrl} set={setNewUrl} id="audioUrl" />
@@ -69,13 +69,11 @@ const EditForm = ({ items, setItems, inEdit, setInEdit }) => {
   return <div />
 }
 
-const Input = ({ label, value, set, id }) => {
-  return (
-    <div>
-      {`${label}: `}
-      <input id={id} type="text" value={value} onChange={(event) => set(event.target.value)} />
-    </div>
-  )
-}
+const Input = ({ label, value, set, id }) => (
+  <div>
+    {`${label}: `}
+    <input id={id} type="text" value={value} onChange={(event) => set(event.target.value)} />
+  </div>
+)
 
 export default EditForm

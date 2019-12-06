@@ -14,7 +14,9 @@ const List = ({ items, filter, checkFilter, setInEdit }) => {
   const mapItems = (list) => list.map((item) => {
     if (!item.name) return <li key={item.id}>no name</li>
     if (item.author) return <BookRec key={item.id} item={item} setInEdit={setInEdit} />
-    if (item.creator && item.url) return <AudioRec key={item.id} item={item} setInEdit={setInEdit} />
+    if (item.creator && item.url) {
+      return <AudioRec key={item.id} item={item} setInEdit={setInEdit} />
+    }
     return <li>not book or audio</li>
   })
 

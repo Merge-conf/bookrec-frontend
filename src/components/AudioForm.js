@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 import audioService from '../services/audioService'
 import { StyledInput, StyledButton } from './Styles'
-import styled from 'styled-components'
 
 const AudioForm = ({ items, setItems, setType }) => {
   const [creator, setCreator] = useState('')

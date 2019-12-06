@@ -4,14 +4,12 @@ import Popup from 'reactjs-popup'
 import bookService from '../services/bookService'
 import audioService from '../services/audioService'
 
-const Tables = ({ books, setBooks, audio, setAudio, filter }) => {
-  return (
-    <div>
-      <BookTable data={books} setData={setBooks} render={filter.books} />
-      <AudioTable data={audio} setData={setAudio} render={filter.audio} />
-    </div>
-  )
-}
+const Tables = ({ books, setBooks, audio, setAudio, filter }) => (
+  <div>
+    <BookTable data={books} setData={setBooks} render={filter.books} />
+    <AudioTable data={audio} setData={setAudio} render={filter.audio} />
+  </div>
+)
 
 const BookTable = ({ setData, data, render }) => {
   const [inEdit, setInEdit] = useState(null)
@@ -21,13 +19,13 @@ const BookTable = ({ setData, data, render }) => {
     {
       name: 'author',
       selector: 'author',
-      sortable: true
+      sortable: true,
     },
     {
       name: 'name',
       selector: 'name',
-      sortable: true
-    }
+      sortable: true,
+    },
   ]
 
   if (!render) return <></>
@@ -76,13 +74,13 @@ const AudioTable = ({ setData, data, render }) => {
     {
       name: 'creator',
       selector: 'creator',
-      sortable: true
+      sortable: true,
     },
     {
       name: 'name',
       selector: 'name',
-      sortable: true
-    }
+      sortable: true,
+    },
   ]
 
   if (!render) return <></>

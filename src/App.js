@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Checkbox from 'rc-checkbox'
-import List from './components/List'
+import styled from 'styled-components'
 import bookService from './services/bookService'
 import audioService from './services/audioService'
-import FilterField from './components/FilterField'
-import EditForm from './components/EditForm'
 import RecommendationAdder from './components/RecommendationAdder'
 import Tables from './components/Tables'
-import styled from 'styled-components'
 
 const App = () => {
   const [filter, setFilter] = useState({ books: true, audio: true })
@@ -43,9 +40,9 @@ const Content = styled.div`
 `
 
 const Header = styled.h2`
-font-size: 16px;
-margin-top: 20px;
-margin-bottom: 4px;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 4px;
 `
 
 export default App
