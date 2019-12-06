@@ -17,4 +17,9 @@ const update = async (book, id) => {
   return res.data
 }
 
-export default { getAll, create, update }
+const remove = async (id) => {
+  const res = await axios.delete(`${url}/${id}`)
+  return res.data
+}
+
+export default { getAll, create, update, remove }

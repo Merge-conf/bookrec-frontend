@@ -25,4 +25,10 @@ const uploadFile = async (file) => {
   return res.data.url
 }
 
-export default { getAll, create, uploadFile, update }
+const remove = async (audio) => {
+  const res = await axios.delete(`${url}/${audio.id}`)
+  axios.delete(audio.url)
+  return res.data
+}
+
+export default { getAll, create, uploadFile, update, remove }
