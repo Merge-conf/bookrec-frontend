@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import DataTable from 'react-data-table-component'
 import Popup from 'reactjs-popup'
 import bookService from '../../services/bookService'
+import { StyledInput, StyledButton, StyledModal } from '../Styles'
 
 const BookTable = ({ setData, data, render }) => {
   const [inEdit, setInEdit] = useState(null)
@@ -44,15 +45,15 @@ const BookTable = ({ setData, data, render }) => {
   return (
     <div>
       <Popup modal open={Boolean(inEdit)} onClose={() => setInEdit(null)}>
-        <form onSubmit={edit}>
-          New Name:
-          <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
-          <br />
-          New Author:
-          <input type="text" value={author} onChange={(event) => setAuthor(event.target.value)} />
-          <br />
-          <button type="submit">edit</button>
-        </form>
+        <StyledModal>
+          <form onSubmit={edit}>
+            <StyledInput type="text" placeholder="New Name" value={name} onChange={(event) => setName(event.target.value)} />
+            <br />
+            <StyledInput type="text" placeholder="New Author" value={author} onChange={(event) => setAuthor(event.target.value)} />
+            <br />
+            <StyledButton type="submit">Save</StyledButton>
+          </form>
+        </StyledModal>
       </Popup>
       <DataTable onRowDoubleClicked={(item) => setInEdit(item)} selectableRows title="Books (double click to edit)" columns={columns} data={data} />
     </div>

@@ -16,3 +16,7 @@ export const StyledButton = styled.button`
   font-size: 12px;
   padding: 4px;
 `
+export const StyledModal = styled.div`
+display: flex;
+justify-content: center;
+`
