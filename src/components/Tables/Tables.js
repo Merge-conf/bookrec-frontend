@@ -9,8 +9,16 @@ const Tables = ({ books, setBooks, audio, setAudio }) => {
   return (
     <div id="recommendations">
       <FilterTables filter={filter} setFilter={setFilter} />
-      <BookTable data={books} setData={setBooks} render={filter.books} />
-      <AudioTable data={audio} setData={setAudio} render={filter.audio} />
+      <BookTable
+        data={books}
+        setData={setBooks}
+        render={filter.books}
+      />
+      <AudioTable
+        data={audio}
+        setData={setAudio}
+        render={filter.audio}
+      />
     </div>
   )
 }

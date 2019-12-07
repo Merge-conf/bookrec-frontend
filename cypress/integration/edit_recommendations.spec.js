@@ -1,3 +1,5 @@
+import { wait } from "@testing-library/dom"
+
 describe('Recommendations can be edited', function(){
   beforeEach(function () {
     cy.request('POST', 'http://localhost:3001/api/testing/reset')
@@ -12,35 +14,18 @@ describe('Recommendations can be edited', function(){
     const audio = {
       name: 'testaudio',
       creator: 'testcreator',
-      url: 'testurl'
+      url: 'www.testurl.fi'
     }
     cy.request('POST', 'http://localhost:3001/api/audios', audio)
     cy.visit('/')
   })
 
   it('Book can be edited', function(){
-    cy.contains('edit').click()
-    cy.get('#bookName').type('Name is changed')
-    cy.get('#bookAuthor').type('Author is changed')
-    cy.get('#submitBook').click()
-    cy.contains('Name: Name is changed')
-    cy.contains('Author: Author is changed')
-  })
-
-  it('Audio can be edited', function(){
-    cy.contains('edit').click()
-    cy.get('#audioName').type('Name is changed')
-    cy.get('#audioCreator').type('Creator is changed')
-    cy.get('#audioUrl').type('Url is changed, not valid in any way')
-    cy.get('#submitAudio').click()
-    cy.contains('Name is changed')
-    cy.contains('Creator is changed')
-  })
-
-  it('Cancel closes the form', function(){
-    cy.contains('edit').click()
-    cy.contains('cancel').click()
-    cy.get('body').should('not.contain', 'name:')
-    cy.get('body').should('not.contain', 'author:')
+    cy.contains('Homo Deus').dblclick()
+    cy.get('[placeholder="New Name"]').type('Name is changed')
+    cy.get('[placeholder="New Author"]').type('Author is changed')
+    cy.contains('Save').click()
+    cy.get('#recommendations').should('contain', 'Name is changed')
+    cy.get('#recommendations').should('contain', 'Author is changed')
   })
 })

@@ -6,9 +6,9 @@ import Player from '../Player'
 import { StyledInput, StyledButton, StyledModal } from '../Styles'
 
 const AudioTable = ({ setData, data, render }) => {
-  const [inEdit, setInEdit] = useState(null)
   const [name, setName] = useState('')
   const [creator, setCreator] = useState('')
+  const [inEdit, setInEdit] = useState(null)
   const [url, setUrl] = useState('')
   const columns = [
     {
@@ -44,6 +44,7 @@ const AudioTable = ({ setData, data, render }) => {
     setName('')
     setCreator('')
   }
+
   return (
     <div>
       <Popup modal open={Boolean(inEdit)} onClose={() => setInEdit(null)}>
@@ -59,11 +60,12 @@ const AudioTable = ({ setData, data, render }) => {
       </Popup>
       <DataTable
         onRowDoubleClicked={(item) => setInEdit(item)}
-        selectableRows 
-        title="Audio (click to play)" 
+        selectableRows
+        title="Audio (click to play)"
         columns={columns}
         data={data}
-        onRowClicked={(item) => setUrl(item.url)} />
+        onRowClicked={(item) => setUrl(item.url)}
+      />
       <Player url={url} />
     </div>
   )

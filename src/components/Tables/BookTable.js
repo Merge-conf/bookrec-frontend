@@ -5,9 +5,9 @@ import bookService from '../../services/bookService'
 import { StyledInput, StyledButton, StyledModal } from '../Styles'
 
 const BookTable = ({ setData, data, render }) => {
-  const [inEdit, setInEdit] = useState(null)
   const [name, setName] = useState('')
   const [author, setAuthor] = useState('')
+  const [inEdit, setInEdit] = useState(null)
   const columns = [
     {
       name: 'author',
