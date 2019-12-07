@@ -30,8 +30,7 @@ describe('Audio recommendation can be added', function () {
   
       cy.get('[type="checkbox"]').check()
   
-      cy.contains('Title: Fullstack Podcast')
-        .contains('play')
+      cy.contains('Fullstack Podcast')
     })
   })
   

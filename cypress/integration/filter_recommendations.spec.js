@@ -15,51 +15,30 @@ describe('Recommendations can be filtered', function () {
       url: 'testurl'
     }
     cy.request('POST', 'http://localhost:3001/api/audios', audio)
+    cy.visit('/')
   })
 
-  it('nothing is checked, nothing is shown', function () {
-    cy.visit('/')
-    cy.get('ul').should('not.contain', 'Homo Deus')
-    cy.get('ul').should('not.contain', 'testaudio')
+  it('nothing is unchecked, everything is shown', function () {
+    cy.contains('Homo Deus')
+    cy.contains('testaudio')
   })
 
-  it('by checking correct box audio is shown', function () {
-    cy.visit('/')
-    cy.get('[type="checkbox"]').first().check()
-    cy.contains('Title: testaudio')
-    cy.contains('testcreator')
-  })
-
-  it('by checking correct box book is shown', function () {
-    cy.visit('/')
-    cy.get('[type="checkbox"]').check()
+  it('by unchecking books only audio is shown', function () {
     cy.get('[type="checkbox"]').first().uncheck()
-    cy.contains('Name: Homo Deus')
-    cy.contains('Author: Yuval Noah Harari')
+    cy.get('#recommendations').should('not.contain', 'Homo Deus')
+    cy.get('#recommendations').should('contain', 'testaudio')
   })
 
-  it('by checking both audio and book are shown', function () {
-    cy.visit('/')
-    cy.get('[type="checkbox"]').check()
-    cy.contains('Title: testaudio')
-    cy.contains('testcreator')
-    cy.contains('Name: Homo Deus')
-    cy.contains('Author: Yuval Noah Harari')
+  it('by unchecking audio only book is shown', function () {
+    cy.get('[type="checkbox"]').last().uncheck()
+    cy.get('#recommendations').should('not.contain', 'testaudio')
+    cy.get('#recommendations').should('contain', 'Homo Deus')
   })
 
-  it('when given a filter string book is shown', function () {
-    cy.visit('/')
-    cy.get('[type="checkbox"]').check()
-    cy.get('#filterText').type('Deus')
-    cy.contains('Name: Homo Deus')
-    cy.contains('Author: Yuval Noah Harari')
-  })
-
-  it('when given a filter string audio is shown', function () {
-    cy.visit('/')
-    cy.get('[type="checkbox"]').check()
-    cy.get('#filterText').type('test')
-    cy.contains('Title: testaudio')
-    cy.contains('testcreator')
+  it('by unchecking both nothing is shown', function () {
+    cy.get('[type="checkbox"]').first().uncheck()
+    cy.get('[type="checkbox"]').last().uncheck()
+    cy.get('#recommendations').should('not.contain', 'testaudio')
+    cy.get('#recommendations').should('not.contain', 'Homo Deus')
   })
 })

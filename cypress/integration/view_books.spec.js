@@ -15,8 +15,7 @@ describe('Books can be viewed', function () {
   })
 
   it('Website should contain a example book', function () {
-    cy.get('[type="checkbox"]').check()
-    cy.get('ul').children().contains('Author: Yuval Noah Harari')
-    cy.get('ul').children().contains('Name: Homo Deus')
+    cy.contains('Yuval Noah Harari')
+    cy.contains('Homo Deus')
   })
 })

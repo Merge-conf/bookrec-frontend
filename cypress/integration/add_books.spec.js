@@ -19,7 +19,7 @@ describe('Books can be added', function () {
 
     cy.get('[type="checkbox"]').check()
 
-    cy.contains('Author: Tolkien')
-      .contains('Name: Lord of the Rings')
+    cy.contains('Tolkien')
+    cy.contains('Lord of the Rings')
   })
 })

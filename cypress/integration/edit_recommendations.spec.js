@@ -15,12 +15,10 @@ describe('Recommendations can be edited', function(){
       url: 'testurl'
     }
     cy.request('POST', 'http://localhost:3001/api/audios', audio)
+    cy.visit('/')
   })
 
   it('Book can be edited', function(){
-    cy.visit('/')
-    cy.get('[type="checkbox"]').check()
-    cy.get('[type="checkbox"]').first().uncheck()
     cy.contains('edit').click()
     cy.get('#bookName').type('Name is changed')
     cy.get('#bookAuthor').type('Author is changed')
@@ -30,8 +28,6 @@ describe('Recommendations can be edited', function(){
   })
 
   it('Audio can be edited', function(){
-    cy.visit('/')
-    cy.get('[type="checkbox"]').first().check()
     cy.contains('edit').click()
     cy.get('#audioName').type('Name is changed')
     cy.get('#audioCreator').type('Creator is changed')
@@ -42,8 +38,6 @@ describe('Recommendations can be edited', function(){
   })
 
   it('Cancel closes the form', function(){
-    cy.visit('/')
-    cy.get('[type="checkbox"]').check()
     cy.contains('edit').click()
     cy.contains('cancel').click()
     cy.get('body').should('not.contain', 'name:')
