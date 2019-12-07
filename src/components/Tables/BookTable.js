@@ -54,7 +54,7 @@ const BookTable = ({ setData, data, render }) => {
           <button type="submit">edit</button>
         </form>
       </Popup>
-      <DataTable onRowClicked={(item) => setInEdit(item)} selectableRows title="Books" columns={columns} data={data} />
+      <DataTable onRowDoubleClicked={(item) => setInEdit(item)} selectableRows title="Books (double click to edit)" columns={columns} data={data} />
     </div>
   )
 }
