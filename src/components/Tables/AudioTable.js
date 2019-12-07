@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import DataTable from 'react-data-table-component'
 import Popup from 'reactjs-popup'
+import differenceBy from 'lodash/differenceBy'
 import audioService from '../../services/audioService'
 import Player from '../Player'
 import { StyledInput, StyledButton, StyledModal } from '../Styles'
@@ -10,6 +11,9 @@ const AudioTable = ({ setData, data, render }) => {
   const [creator, setCreator] = useState('')
   const [inEdit, setInEdit] = useState(null)
   const [url, setUrl] = useState('')
+  const [selected, setSelected] = useState([])
+  const [clearRows, setClearRows] = useState(false)
+
   const columns = [
     {
       name: 'creator',
@@ -45,6 +49,14 @@ const AudioTable = ({ setData, data, render }) => {
     setCreator('')
   }
 
+  const deleteSelected = () => {
+    selected.forEach((audioToRemove) => {
+      audioService.remove(audioToRemove)
+    })
+    setData(differenceBy(data, selected, 'id'))
+    setClearRows(!clearRows)
+  }
+
   return (
     <div>
       <Popup modal open={Boolean(inEdit)} onClose={() => setInEdit(null)}>
@@ -61,11 +73,14 @@ const AudioTable = ({ setData, data, render }) => {
       <DataTable
         onRowDoubleClicked={(item) => setInEdit(item)}
         selectableRows
+        onSelectedRowsChange={(state) => setSelected(state.selectedRows)}
+        clearSelectedRows={clearRows}
         title="Audio (click to play)"
         columns={columns}
         data={data}
         onRowClicked={(item) => setUrl(item.url)}
       />
+      <button type="button" onClick={deleteSelected}>delete selected</button>
       <Player url={url} />
     </div>
   )
