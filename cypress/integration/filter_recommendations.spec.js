@@ -30,7 +30,7 @@ describe('Recommendations can be filtered', function () {
   })
 
   it('by unchecking audio only book is shown', function () {
-    cy.get('[type="checkbox"]').last().uncheck()
+    cy.get('[type="checkbox"]').eq(1).uncheck()
     cy.get('#recommendations').should('not.contain', 'testaudio')
     cy.get('#recommendations').should('contain', 'Homo Deus')
   })

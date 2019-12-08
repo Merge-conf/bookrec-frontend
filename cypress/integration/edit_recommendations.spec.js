@@ -21,6 +21,7 @@ describe('Recommendations can be edited', function(){
   })
 
   it('Book can be edited', function(){
+    wait(100)
     cy.contains('Homo Deus').dblclick()
     cy.get('[placeholder="New Name"]').type('Name is changed')
     cy.get('[placeholder="New Author"]').type('Author is changed')

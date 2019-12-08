@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import DataTable from 'react-data-table-component'
 import Popup from 'reactjs-popup'
+import styled from 'styled-components'
 import differenceBy from 'lodash/differenceBy'
 import audioService from '../../services/audioService'
 import Player from '../Player'
@@ -24,6 +25,18 @@ const AudioTable = ({ setData, data, render }) => {
       name: 'name',
       selector: 'name',
       sortable: true,
+    },
+    {
+      cell: (item) => {
+        return (
+          <PlayButton type="button" raised primary onClick={() => setUrl(item.url)}>
+            <img src="/play.png" alt="play" />
+          </PlayButton>
+        )
+      },
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true,
     },
   ]
 
@@ -75,15 +88,22 @@ const AudioTable = ({ setData, data, render }) => {
         selectableRows
         onSelectedRowsChange={(state) => setSelected(state.selectedRows)}
         clearSelectedRows={clearRows}
-        title="Audio (click to play)"
+        title="Audio"
         columns={columns}
         data={data}
-        onRowClicked={(item) => setUrl(item.url)}
       />
       <button type="button" onClick={deleteSelected}>delete selected</button>
       <Player url={url} />
     </div>
   )
 }
+
+const PlayButton = styled.button`
+  background-color: white;
+  border: 0;
+  :hover {
+    cursor: pointer;
+  }
+`
 
 export default AudioTable
