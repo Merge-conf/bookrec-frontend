@@ -20,7 +20,7 @@ describe('book can be deleted', function () {
 
         cy.contains('1 item selected')
 
-        cy.contains('delete selected').click()
+        cy.contains('Delete selected').click()
 
         cy.contains('There are no records to display')
     })
@@ -42,7 +42,7 @@ describe('book can be deleted', function () {
 
         cy.contains('1 item selected')
 
-        cy.contains('delete selected').click()
+        cy.contains('Delete selected').click()
 
         cy.contains('There are no records to display')
 
@@ -71,7 +71,7 @@ describe('book can be deleted', function () {
 
         cy.contains('2 items selected')
 
-        cy.contains('delete selected').click()
+        cy.contains('Delete selected').click()
 
         cy.contains('There are no records to display')
     })
@@ -101,7 +101,7 @@ describe('book can be deleted', function () {
 
         cy.contains('2 items selected')
 
-        cy.contains('delete selected').click()
+        cy.contains('Delete selected').click()
 
         cy.contains('There are no records to display')
 
@@ -130,7 +130,7 @@ describe('book can be deleted', function () {
 
         cy.contains('1 item selected')
 
-        cy.contains('delete selected').click()
+        cy.contains('Delete selected').click()
 
         cy.contains('Homo Deus, vol. 2').should('not.exist')
     })
@@ -160,7 +160,7 @@ describe('book can be deleted', function () {
 
         cy.contains('1 item selected')
 
-        cy.contains('delete selected').click()
+        cy.contains('Delete selected').click()
 
         cy.contains('testcreator2').should('not.exist')
     })
