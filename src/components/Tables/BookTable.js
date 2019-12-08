@@ -3,7 +3,7 @@ import DataTable from 'react-data-table-component'
 import Popup from 'reactjs-popup'
 import differenceBy from 'lodash/differenceBy'
 import bookService from '../../services/bookService'
-import { StyledInput, StyledButton, StyledModal } from '../Styles'
+import { StyledInput, StyledButton, StyledModal, StyledDeleteButton } from '../Styles'
 
 const BookTable = ({ setData, data, render }) => {
   const [name, setName] = useState('')
@@ -67,6 +67,7 @@ const BookTable = ({ setData, data, render }) => {
           </form>
         </StyledModal>
       </Popup>
+      {selected.length > 0 ? <StyledDeleteButton type="button" onClick={deleteSelected}>Delete selected</StyledDeleteButton> : null }
       <DataTable
         onRowDoubleClicked={(item) => setInEdit(item)}
         selectableRows
@@ -76,7 +77,6 @@ const BookTable = ({ setData, data, render }) => {
         columns={columns}
         data={data}
       />
-      <button type="button" onClick={deleteSelected}>delete selected</button>
     </div>
   )
 }

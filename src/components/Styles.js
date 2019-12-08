@@ -20,3 +20,14 @@ export const StyledModal = styled.div`
 display: flex;
 justify-content: center;
 `
+export const StyledDeleteButton = styled.div`
+  background-color: white;
+  border: 1px solid red;
+  margin-top: 8px;
+  width: 200px;
+  font-size: 12px;
+  padding: 4px;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+`
