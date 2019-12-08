@@ -4,16 +4,16 @@ import Popup from 'reactjs-popup'
 import styled from 'styled-components'
 import differenceBy from 'lodash/differenceBy'
 import audioService from '../../services/audioService'
-import Player from '../Player'
 import { StyledInput, StyledButton, StyledModal } from '../Styles'
 
-const AudioTable = ({ setData, data, render }) => {
+const AudioTable = ({ setData, data, render, url, setUrl }) => {
   const [name, setName] = useState('')
   const [creator, setCreator] = useState('')
   const [inEdit, setInEdit] = useState(null)
-  const [url, setUrl] = useState('')
   const [selected, setSelected] = useState([])
   const [clearRows, setClearRows] = useState(false)
+
+  console.log(url)
 
   const columns = [
     {
@@ -93,7 +93,6 @@ const AudioTable = ({ setData, data, render }) => {
         data={data}
       />
       <button type="button" onClick={deleteSelected}>delete selected</button>
-      <Player url={url} />
     </div>
   )
 }
