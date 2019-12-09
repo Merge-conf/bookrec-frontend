@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import bookService from '../services/bookService'
-import { StyledInput, StyledButton } from './Styles'
+import bookService from '../../services/bookService'
+import { StyledInput, StyledButton } from '../Styles'
 
 const BookForm = ({ items, setItems, setType }) => {
   const [name, setName] = useState('')
