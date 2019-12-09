@@ -2,8 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/Merge-conf/bookrec-frontend.svg?style=svg)](https://circleci.com/gh/Merge-conf/bookrec-frontend)
 
-Test coverage
---------------
+## Test coverage
 
 ![All files](https://github.com/Merge-conf/bookrec-frontend/blob/master/test-coverage/all-files.png)
 
