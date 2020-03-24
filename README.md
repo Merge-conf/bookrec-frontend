@@ -12,3 +12,4 @@ Test coverage
 ![Services](https://github.com/Merge-conf/bookrec-frontend/blob/master/test-coverage/services.png)
 
 ![Tables](https://github.com/Merge-conf/bookrec-frontend/blob/master/test-coverage/tables.png)
+
